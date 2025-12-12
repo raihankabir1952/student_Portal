@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/class_routine"
+    tools:context=".ClassRoutineActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="My Weekly Routine"
+        android:textAppearance="?attr/textAppearanceHeadlineMedium"
+        android:textColor="@android:color/white"
+        android:gravity="center"
+        android:padding="16dp"/>
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#80000000"
+        app:tabMode="scrollable"
+        app:tabTextColor="@android:color/white"
+        app:tabSelectedTextColor="@android:color/holo_orange_light"
+        app:tabIndicatorColor="@android:color/holo_orange_light"/>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/routineRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="8dp"
+            tools:listitem="@layout/item_class_schedule"/>
+
+        <TextView
+            android:id="@+id/noClassesTodayText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="No classes scheduled for today."
+            android:textAppearance="?attr/textAppearanceTitleMedium"
+            android:textColor="@android:color/white"
+            android:visibility="gone"
+            tools:visibility="visible"/>
+
+    </FrameLayout>
+
+</LinearLayout>

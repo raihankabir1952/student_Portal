@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".NoticeBoardActivity"
+    android:background="@drawable/student_dashbord">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Notice Board"
+        android:textAppearance="?attr/textAppearanceHeadlineMedium"
+        android:layout_marginBottom="16dp"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/noticesRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:listitem="@layout/item_notice_student" />
+
+    <TextView
+        android:id="@+id/noNoticesText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No notices available at the moment."
+        android:visibility="gone"
+        android:layout_gravity="center"/>
+
+</LinearLayout>
