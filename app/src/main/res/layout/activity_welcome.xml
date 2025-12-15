@@ -1,37 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/student_dashbord"
+    android:background="@drawable/class_routine"
     tools:context=".WelcomeActivity">
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/profileCard"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        app:cardBackgroundColor="?attr/colorSurfaceContainerHigh"
+        app:cardBackgroundColor="#CCFFFFFF"
         app:cardCornerRadius="16dp"
         app:cardElevation="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_gravity="center">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="24dp"
-            android:background="@drawable/student_details">
+            android:padding="24dp">
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/profileImage"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:padding="5dp"
-                android:src="@android:drawable/ic_menu_camera"
+                android:src="@drawable/img_1"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full"
@@ -77,7 +73,7 @@
 
             <TextView
                 android:id="@+id/departmentLabel"
-                android:layout_width="100dp"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="Department"
@@ -99,7 +95,7 @@
 
             <TextView
                 android:id="@+id/semesterLabel"
-                android:layout_width="100dp"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:text="Semester"
@@ -121,7 +117,7 @@
 
             <TextView
                 android:id="@+id/phoneLabel"
-                android:layout_width="100dp"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:text="Phone"
@@ -143,7 +139,7 @@
 
             <TextView
                 android:id="@+id/addressLabel"
-                android:layout_width="100dp"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:text="Address"
@@ -164,37 +160,59 @@
                 tools:text="123 Main St, Anytown" />
 
             <TextView
-                android:id="@+id/ageLabel"
-                android:layout_width="100dp"
+                android:id="@+id/dobLabel"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:text="Age"
+                android:text="Date of Birth"
                 android:textAppearance="?attr/textAppearanceTitleMedium"
                 android:textColor="?attr/colorSecondary"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/addressText" />
 
             <TextView
-                android:id="@+id/ageText"
+                android:id="@+id/dobText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:textAppearance="?attr/textAppearanceBodyMedium"
-                app:layout_constraintBaseline_toBaselineOf="@+id/ageLabel"
+                app:layout_constraintBaseline_toBaselineOf="@+id/dobLabel"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/ageLabel"
-                tools:text="30" />
+                app:layout_constraintStart_toEndOf="@+id/dobLabel"
+                tools:text="01/01/2000" />
+
+            <TextView
+                android:id="@+id/bloodGroupLabel"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Blood Group"
+                android:textAppearance="?attr/textAppearanceTitleMedium"
+                android:textColor="?attr/colorSecondary"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/dobText" />
+
+            <TextView
+                android:id="@+id/bloodGroupText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:textAppearance="?attr/textAppearanceBodyMedium"
+                app:layout_constraintBaseline_toBaselineOf="@+id/bloodGroupLabel"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/bloodGroupLabel"
+                tools:text="A+" />
 
             <TextView
                 android:id="@+id/genderLabel"
-                android:layout_width="100dp"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:text="Gender"
                 android:textAppearance="?attr/textAppearanceTitleMedium"
                 android:textColor="?attr/colorSecondary"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ageText" />
+                app:layout_constraintTop_toBottomOf="@+id/bloodGroupText" />
 
             <TextView
                 android:id="@+id/genderText"
@@ -211,4 +229,14 @@
 
     </com.google.android.material.card.MaterialCardView>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/editProfileFab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:src="@drawable/ic_edit"
+        app:layout_anchor="@id/profileCard"
+        app:layout_anchorGravity="bottom|end"
+        android:contentDescription="Edit Profile" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

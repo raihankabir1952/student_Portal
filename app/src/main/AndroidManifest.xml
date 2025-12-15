@@ -32,6 +32,7 @@
         <activity android:name=".ManageNoticesActivity" />
         <activity android:name=".NoticeBoardActivity" />
         <activity android:name=".ClassRoutineActivity" />
+        <activity android:name=".EditProfileActivity" />
     </application>
 
 </manifest>

@@ -1,14 +1,17 @@
 package com.example.login_page
 
+import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.ArrayAdapter
 import android.widget.RadioButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.login_page.databinding.ActivityRegisterBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import java.util.Calendar
 
 class RegisterActivity : AppCompatActivity() {
 
@@ -24,8 +27,36 @@ class RegisterActivity : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
         db = FirebaseFirestore.getInstance()
 
+        setupBloodGroupSpinner()
+        setupDatePicker()
+
         binding.registerButton.setOnClickListener {
             registerUser()
+        }
+    }
+
+    private fun setupBloodGroupSpinner() {
+        val bloodGroups = arrayOf("Select Blood Group", "A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-")
+        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, bloodGroups)
+        binding.bloodGroupSpinner.adapter = adapter
+    }
+
+    private fun setupDatePicker() {
+        binding.dobText.setOnClickListener {
+            val calendar = Calendar.getInstance()
+            val year = calendar.get(Calendar.YEAR)
+            val month = calendar.get(Calendar.MONTH)
+            val day = calendar.get(Calendar.DAY_OF_MONTH)
+
+            val datePickerDialog = DatePickerDialog(
+                this,
+                { _, selectedYear, selectedMonth, selectedDay ->
+                    val selectedDate = "$selectedDay/${selectedMonth + 1}/$selectedYear"
+                    binding.dobText.text = selectedDate
+                },
+                year, month, day
+            )
+            datePickerDialog.show()
         }
     }
 
@@ -37,11 +68,14 @@ class RegisterActivity : AppCompatActivity() {
         val phone = binding.phone.text.toString().trim()
         val department = binding.department.text.toString().trim()
         val semester = binding.semester.text.toString().trim()
-        val age = binding.age.text.toString().trim()
+        val dob = binding.dobText.text.toString().trim()
+        val bloodGroup = binding.bloodGroupSpinner.selectedItem.toString()
 
         val selectedGenderId = binding.gender.checkedRadioButtonId
-        if (name.isEmpty() || email.isEmpty() || password.isEmpty() || address.isEmpty() || phone.isEmpty() || department.isEmpty() || semester.isEmpty() || age.isEmpty() || selectedGenderId == -1) {
-            Toast.makeText(this, "Please fill all the fields", Toast.LENGTH_SHORT).show()
+        if (name.isEmpty() || email.isEmpty() || password.isEmpty() || address.isEmpty() || phone.isEmpty() || 
+            department.isEmpty() || semester.isEmpty() || dob.isEmpty() || dob == "Select Date of Birth" || 
+            bloodGroup == "Select Blood Group" || selectedGenderId == -1) {
+            Toast.makeText(this, "Please fill all the fields correctly.", Toast.LENGTH_SHORT).show()
             return
         }
 
@@ -61,13 +95,13 @@ class RegisterActivity : AppCompatActivity() {
                             "phone" to phone,
                             "department" to department,
                             "semester" to semester,
-                            "age" to age,
+                            "dob" to dob,
+                            "bloodGroup" to bloodGroup,
                             "gender" to gender,
-                            "role" to "student" // Assign role as student
+                            "role" to "student"
                         )
 
-                        db.collection("users").document(userId)
-                            .set(user)
+                        db.collection("users").document(userId).set(user)
                             .addOnSuccessListener { 
                                 binding.progressBar.visibility = View.GONE
                                 Toast.makeText(baseContext, "Registration successful!", Toast.LENGTH_SHORT).show()
@@ -83,10 +117,7 @@ class RegisterActivity : AppCompatActivity() {
                     }
                 } else {
                     binding.progressBar.visibility = View.GONE
-                    Toast.makeText(
-                        baseContext, "Authentication failed: ${task.exception?.message}",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    Toast.makeText(baseContext, "Authentication failed: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
                 }
             }
     }

@@ -2,8 +2,11 @@ package com.example.login_page
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.login_page.databinding.ActivityMainBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -31,9 +34,47 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, FacultyLoginActivity::class.java))
         }
 
+        binding.forgotPasswordText.setOnClickListener {
+            showForgotPasswordDialog()
+        }
+
         binding.loginButton.setOnClickListener {
             loginStudent()
         }
+    }
+
+    private fun showForgotPasswordDialog() {
+        val builder = AlertDialog.Builder(this)
+        val inflater = LayoutInflater.from(this)
+        val dialogView = inflater.inflate(R.layout.dialog_forgot_password, null)
+        val emailEditText = dialogView.findViewById<EditText>(R.id.emailEditText)
+
+        builder.setView(dialogView)
+            .setTitle("Reset Password")
+            .setPositiveButton("Send") { dialog, _ ->
+                val email = emailEditText.text.toString().trim()
+                if (email.isNotEmpty()) {
+                    sendPasswordResetEmail(email)
+                } else {
+                    Toast.makeText(this, "Please enter your email address.", Toast.LENGTH_SHORT).show()
+                }
+                dialog.dismiss()
+            }
+            .setNegativeButton("Cancel") { dialog, _ ->
+                dialog.dismiss()
+            }
+            .create().show()
+    }
+
+    private fun sendPasswordResetEmail(email: String) {
+        auth.sendPasswordResetEmail(email)
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    Toast.makeText(this, "Password reset link sent to your email.", Toast.LENGTH_LONG).show()
+                } else {
+                    Toast.makeText(this, "Failed to send reset link: ${task.exception?.message}", Toast.LENGTH_LONG).show()
+                }
+            }
     }
 
     private fun loginStudent() {
@@ -52,18 +93,15 @@ class MainActivity : AppCompatActivity() {
                 if (task.isSuccessful) {
                     val userId = auth.currentUser?.uid
                     if (userId != null) {
-                        // Check if the user has the 'student' role in Firestore
                         db.collection("users").document(userId).get()
                             .addOnSuccessListener { document ->
                                 binding.progressBar.visibility = View.GONE
                                 if (document != null && (document.getString("role") == "student" || document.getString("role") == null)) {
-                                    // User is a student (or role is not defined, for older users), proceed to student dashboard
                                     val intent = Intent(this, DashboardActivity::class.java)
                                     intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                                     startActivity(intent)
                                     finish()
                                 } else {
-                                    // Not a student user, sign them out
                                     auth.signOut()
                                     Toast.makeText(baseContext, "Faculty accounts must use the 'Login as Faculty' option.", Toast.LENGTH_LONG).show()
                                 }

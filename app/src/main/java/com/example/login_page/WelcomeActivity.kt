@@ -1,5 +1,6 @@
 package com.example.login_page
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -22,6 +23,16 @@ class WelcomeActivity : AppCompatActivity() {
         db = FirebaseFirestore.getInstance()
 
         loadUserProfile()
+
+        binding.editProfileFab.setOnClickListener {
+            startActivity(Intent(this, EditProfileActivity::class.java))
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        // Reload profile data when returning to this activity
+        loadUserProfile()
     }
 
     private fun loadUserProfile() {
@@ -31,23 +42,15 @@ class WelcomeActivity : AppCompatActivity() {
                 .get()
                 .addOnSuccessListener { document ->
                     if (document != null && document.exists()) {
-                        val name = document.getString("name")
-                        val email = document.getString("email")
-                        val address = document.getString("address")
-                        val phone = document.getString("phone")
-                        val department = document.getString("department")
-                        val semester = document.getString("semester")
-                        val age = document.getString("age")
-                        val gender = document.getString("gender")
-
-                        binding.nameText.text = name
-                        binding.emailText.text = email
-                        binding.addressText.text = address
-                        binding.phoneText.text = phone
-                        binding.departmentText.text = department
-                        binding.semesterText.text = semester
-                        binding.ageText.text = age
-                        binding.genderText.text = gender
+                        binding.nameText.text = document.getString("name")
+                        binding.emailText.text = document.getString("email")
+                        binding.departmentText.text = document.getString("department")
+                        binding.semesterText.text = document.getString("semester")
+                        binding.phoneText.text = document.getString("phone")
+                        binding.addressText.text = document.getString("address")
+                        binding.dobText.text = document.getString("dob")
+                        binding.bloodGroupText.text = document.getString("bloodGroup")
+                        binding.genderText.text = document.getString("gender")
 
                     } else {
                         Toast.makeText(this, "User profile not found.", Toast.LENGTH_SHORT).show()
