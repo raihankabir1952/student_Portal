@@ -8,20 +8,20 @@
     tools:context=".DashboardActivity"
     android:background="@drawable/student_dashbord">
 
-    <TextView
-        android:id="@+id/titleText"
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/themeSwitch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="welcome to"
-        android:textAppearance="?attr/textAppearanceHeadlineMedium"
-        android:textColor="?attr/colorPrimary"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="Dark Mode"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:gravity="center_vertical"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -34,8 +34,8 @@
             android:layout_height="wrap_content"
             android:padding="16dp"
             android:text="👤 My Profile"
-            app:backgroundTint="?attr/colorPrimary"
-            android:textColor="?attr/colorOnPrimary"/>
+            android:textColor="?attr/colorOnPrimary"
+            app:backgroundTint="?attr/colorPrimary" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/myCourseButton"
@@ -44,8 +44,8 @@
             android:layout_marginTop="8dp"
             android:padding="16dp"
             android:text="📚 My Courses"
-            app:backgroundTint="?attr/colorSecondary"
-            android:textColor="?attr/colorOnSecondary"/>
+            android:textColor="?attr/colorOnSecondary"
+            app:backgroundTint="?attr/colorSecondary" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/courseRegistrationButton"
@@ -54,8 +54,8 @@
             android:layout_marginTop="8dp"
             android:padding="16dp"
             android:text="🧾 Course Registration"
-            app:backgroundTint="?attr/colorTertiaryContainer"
-            android:textColor="?attr/colorOnTertiaryContainer" />
+            android:textColor="?attr/colorOnTertiaryContainer"
+            app:backgroundTint="?attr/colorTertiaryContainer" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/noticeBoardButton"
@@ -64,8 +64,8 @@
             android:layout_marginTop="8dp"
             android:padding="16dp"
             android:text="🪧Notice Board"
-            app:backgroundTint="?attr/colorSurfaceVariant"
-            android:textColor="?attr/colorOnSurfaceVariant"/>
+            android:textColor="?attr/colorOnSurfaceVariant"
+            app:backgroundTint="?attr/colorSurfaceVariant" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/classRoutineButton"
@@ -74,8 +74,8 @@
             android:layout_marginTop="8dp"
             android:padding="16dp"
             android:text="🗓️ Class Routine"
-            app:backgroundTint="?attr/colorPrimaryContainer"
-            android:textColor="?attr/colorOnPrimaryContainer"/>
+            android:textColor="?attr/colorOnPrimaryContainer"
+            app:backgroundTint="?attr/colorPrimaryContainer" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/logoutButton"
@@ -85,19 +85,21 @@
             android:layout_marginTop="32dp"
             android:text="➡️ Logout"
             android:textColor="@android:color/white"
-            app:backgroundTint="@android:color/holo_red_dark"/>
+            app:backgroundTint="@android:color/holo_red_dark" />
 
     </LinearLayout>
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="324dp"
-        android:layout_height="103dp"
-        android:layout_marginTop="36dp"
+    <TextView
+        android:id="@+id/titleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Student Portal"
+        android:textAppearance="?attr/textAppearanceHeadlineMedium"
+        android:textColor="?attr/colorPrimary"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/img_1" />
+        app:layout_constraintVertical_bias="0.236" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
