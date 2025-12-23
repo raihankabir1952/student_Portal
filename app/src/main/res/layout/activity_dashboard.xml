@@ -6,21 +6,34 @@
     android:layout_height="match_parent"
     android:padding="16dp"
     tools:context=".DashboardActivity"
-    android:background="@drawable/student_dashbord">
+    android:background="@drawable/class_routine">
+
+    <TextView
+        android:id="@+id/titleText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:text="Welcome"
+        android:textAppearance="?attr/textAppearanceHeadlineMedium"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/themeSwitch"
+        app:layout_constraintEnd_toStartOf="@+id/themeSwitch"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/themeSwitch" />
 
     <com.google.android.material.switchmaterial.SwitchMaterial
         android:id="@+id/themeSwitch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
         android:text="Dark Mode"
+        android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginTop="24dp"
         android:gravity="center_vertical"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -88,18 +101,5 @@
             app:backgroundTint="@android:color/holo_red_dark" />
 
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/titleText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Student Portal"
-        android:textAppearance="?attr/textAppearanceHeadlineMedium"
-        android:textColor="?attr/colorPrimary"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.236" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
