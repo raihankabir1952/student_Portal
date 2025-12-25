@@ -59,4 +59,6 @@ using Kotlin and Firebase, and to understand real-world features such as
 authentication, role-based access, database integration, and UI theming.
 
 ## Screenshots
-(Add screenshots of the app here)
+<img src="https://github.com/user-attachments/assets/13bf0af6-926b-4a40-8557-9930f7e3a744" width="200">
+
+
