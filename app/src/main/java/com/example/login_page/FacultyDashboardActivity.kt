@@ -22,6 +22,10 @@ class FacultyDashboardActivity : AppCompatActivity() {
             startActivity(Intent(this, ManageNoticesActivity::class.java))
         }
 
+        binding.manageResultsButton.setOnClickListener {
+            startActivity(Intent(this, StudentListActivity::class.java))
+        }
+
         binding.logoutButton.setOnClickListener {
             auth.signOut()
             val intent = Intent(this, MainActivity::class.java)

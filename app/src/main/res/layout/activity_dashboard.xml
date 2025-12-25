@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/class_routine"
     android:padding="16dp"
-    tools:context=".DashboardActivity"
-    android:background="@drawable/class_routine">
+    tools:context=".DashboardActivity">
 
     <TextView
         android:id="@+id/titleText"
@@ -47,7 +47,6 @@
             android:layout_height="wrap_content"
             android:padding="16dp"
             android:text="👤 My Profile"
-            android:textColor="?attr/colorOnPrimary"
             app:backgroundTint="?attr/colorPrimary" />
 
         <com.google.android.material.button.MaterialButton
@@ -57,7 +56,6 @@
             android:layout_marginTop="8dp"
             android:padding="16dp"
             android:text="📚 My Courses"
-            android:textColor="?attr/colorOnSecondary"
             app:backgroundTint="?attr/colorSecondary" />
 
         <com.google.android.material.button.MaterialButton
@@ -67,8 +65,7 @@
             android:layout_marginTop="8dp"
             android:padding="16dp"
             android:text="🧾 Course Registration"
-            android:textColor="?attr/colorOnTertiaryContainer"
-            app:backgroundTint="?attr/colorTertiaryContainer" />
+            app:backgroundTint="?attr/colorPrimary" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/noticeBoardButton"
@@ -77,8 +74,7 @@
             android:layout_marginTop="8dp"
             android:padding="16dp"
             android:text="🪧Notice Board"
-            android:textColor="?attr/colorOnSurfaceVariant"
-            app:backgroundTint="?attr/colorSurfaceVariant" />
+            app:backgroundTint="?attr/colorSecondary" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/classRoutineButton"
@@ -87,8 +83,16 @@
             android:layout_marginTop="8dp"
             android:padding="16dp"
             android:text="🗓️ Class Routine"
-            android:textColor="?attr/colorOnPrimaryContainer"
-            app:backgroundTint="?attr/colorPrimaryContainer" />
+            app:backgroundTint="?attr/colorPrimary" />
+            
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/myResultsButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:padding="16dp"
+            android:text="🎓 My Results"
+            app:backgroundTint="?attr/colorSecondary" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/logoutButton"
@@ -97,7 +101,6 @@
             android:layout_gravity="end"
             android:layout_marginTop="32dp"
             android:text="➡️ Logout"
-            android:textColor="@android:color/white"
             app:backgroundTint="@android:color/holo_red_dark" />
 
     </LinearLayout>

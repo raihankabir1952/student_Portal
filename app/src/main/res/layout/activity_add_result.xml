@@ -5,34 +5,29 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    tools:context=".CourseRegistrationActivity">
+    tools:context=".AddResultActivity">
 
     <TextView
+        android:id="@+id/studentNameForResults"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Select Courses to Register"
-        android:textAppearance="?attr/textAppearanceHeadlineMedium"
-        android:layout_marginBottom="8dp"/>
-
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/courseSearchView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:queryHint="Search for a course..."/>
+        android:text="Results for: Student Name"
+        android:textAppearance="?attr/textAppearanceHeadlineSmall"
+        android:layout_marginBottom="16dp"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/coursesRecyclerView"
+        android:id="@+id/coursesForResultsRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        tools:listitem="@layout/item_course" />
+        tools:listitem="@layout/item_course_result" />
 
-    <Button
-        android:id="@+id/registerCoursesButton"
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/saveResultsButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Register Selected Courses" />
+        android:padding="16dp"
+        android:text="Save Results"/>
 
 </LinearLayout>

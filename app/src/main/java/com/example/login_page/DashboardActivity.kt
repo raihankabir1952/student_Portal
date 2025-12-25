@@ -48,6 +48,10 @@ class DashboardActivity : AppCompatActivity() {
             startActivity(Intent(this, ClassRoutineActivity::class.java))
         }
 
+        binding.myResultsButton.setOnClickListener {
+            startActivity(Intent(this, MyResultsActivity::class.java))
+        }
+
         binding.logoutButton.setOnClickListener {
             auth.signOut()
             val intent = Intent(this, MainActivity::class.java)
